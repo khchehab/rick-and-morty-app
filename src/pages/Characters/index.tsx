@@ -1,4 +1,5 @@
 import { useEffect, useState, ChangeEvent } from 'react';
+import Grid from '@mui/material/Grid';
 import NavigationBar from '../../components/UI/NavigationBar';
 import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
@@ -28,6 +29,13 @@ export default function Characters() {
         <NavigationBar currentPage='characters' />
         <Title>Characters</Title>
         <SearchBar value={nameFilter} onChange={nameFilterChangeHandler} />
-        <CharacterList characters={characters} />
+        <Grid container spacing={2}>
+            <Grid item md={3}>
+                <p>filtering</p>
+            </Grid>
+            <Grid item md={9}>
+                <CharacterList characters={characters} />
+            </Grid>
+        </Grid>
     </>);
 }

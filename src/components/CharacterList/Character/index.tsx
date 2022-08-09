@@ -11,7 +11,7 @@ export default function Character({ character }: { character: CharacterType }) {
         return <p>Character could not be loaded!</p>;
     }
 
-    const width = 330;
+    const width = 300;
     const statusColor = character.status === 'Alive' ? 'success' : character.status === 'Dead' ? 'error' : 'warning';
     const statusBadgeRight = character.status === 'unknown' ? '50px' : '35px';
 
@@ -19,7 +19,7 @@ export default function Character({ character }: { character: CharacterType }) {
     return (<Badge badgeContent={character.status} color={statusColor} sx={{
         '& .MuiBadge-badge': {
             right: statusBadgeRight,
-            top: '25px',
+            top: '20px',
             fontWeight: '400',
             fontSize: '1rem',
             letterSpacing: '0.05rem',
@@ -31,12 +31,17 @@ export default function Character({ character }: { character: CharacterType }) {
             <Card square sx={{ maxWidth: width }}>
                 <CardMedia component='img' height={width} image={character.image} alt={character.name} />
                 <CardContent>
-                    <Typography variant='h5' align='left' gutterBottom>{character.name}</Typography>
+                    <Typography variant='h5' align='left' gutterBottom sx={{
+                        fontSize: '1.25rem'
+                    }}>{character.name}</Typography>
                     <Typography variant='body2' align='left' sx={{
                         fontWeight: '300',
                         fontSize: '1rem'
                     }}>Last Location</Typography>
-                    <Typography variant='h6' align='left' sx={{ fontWeight: '400' }}>{character.location.name}</Typography>
+                    <Typography variant='h6' align='left' sx={{
+                        fontWeight: '400',
+                        fontSize: '1.1rem'
+                    }}>{character.location.name}</Typography>
                 </CardContent>
             </Card>
         </CardActionArea>

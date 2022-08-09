@@ -10,7 +10,7 @@ export default function CharacterList({ characters }: { characters: CharacterTyp
         }}>No characters found!</Typography>;
     }
 
-    return (<Grid container spacing={2} alignItems='center' justifyContent='center'>
+    return (<Grid container spacing={2} alignItems='center' justifyContent='flex-start'>
         {characters.map((character) => <Grid item key={character.id}>
             <Character character={character} />
         </Grid>)}
