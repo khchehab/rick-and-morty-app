@@ -1,7 +1,7 @@
+import Typography from '@mui/material/Typography';
+
 export default function Title({ children }: { children: string }) {
-    return <h1 style={{
-        fontWeight: 400,
-        textAlign: 'center',
-        fontSize: '2rem'
-    }}>{children}</h1>;
+    return <Typography variant='h4' sx={{
+        textAlign: 'center'
+    }}>{children}</Typography>;
 }

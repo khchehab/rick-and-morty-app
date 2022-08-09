@@ -17,3 +17,13 @@ export interface CharacterType {
     url: string;
     created: string;
 }
+
+export interface CharacterResponse {
+    info: {
+        count: number;
+        pages: number;
+        next: string | null;
+        prev: string | null;
+    },
+    results: CharacterType[];
+}

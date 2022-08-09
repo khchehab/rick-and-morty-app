@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { CharacterType } from '../types';
+import { CharacterType } from '../../../types/character';
 
 export default function Character({ character }: { character: CharacterType }) {
     if (!character) {
