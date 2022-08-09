@@ -14,6 +14,7 @@ export default function SearchBar({ value, onChange }: { value: string, onChange
                        label='Search'
                        variant='standard'
                        size='small'
+                       autoComplete='off'
                        fullWidth
                        value={value}
                        onChange={onChange} />
