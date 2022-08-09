@@ -32,7 +32,7 @@ export default function Character({ character }: { character: CharacterType }) {
                 <CardMedia component='img' height={width} image={character.image} alt={character.name} />
                 <CardContent>
                     <Typography variant='h5' align='left' gutterBottom sx={{
-                        fontSize: '1.25rem'
+                        fontSize: '1.2rem'
                     }}>{character.name}</Typography>
                     <Typography variant='body2' align='left' sx={{
                         fontWeight: '300',
@@ -40,7 +40,7 @@ export default function Character({ character }: { character: CharacterType }) {
                     }}>Last Location</Typography>
                     <Typography variant='h6' align='left' sx={{
                         fontWeight: '400',
-                        fontSize: '1.1rem'
+                        fontSize: '1rem'
                     }}>{character.location.name}</Typography>
                 </CardContent>
             </Card>
