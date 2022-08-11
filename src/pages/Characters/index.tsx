@@ -5,6 +5,7 @@ import NavigationBar from '../../components/UI/NavigationBar';
 import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
+import FilterPanel from '../../components/UI/FilterPanel';
 import { CharacterType } from '../../types/character';
 import { getCharacters } from '../../util/api';
 
@@ -13,16 +14,20 @@ export default function Characters() {
     const [ page, setPage ] = useState<number>(1);
     const [ totalPages, setTotalPages ] = useState<number>(1);
     const [ nameFilter, setNameFilter ] = useState<string>('');
+    const [ statusFilter, setStatusFilter ] = useState<'alive' | 'dead' | 'unknown' | ''>('');
+    const [ speciesFilter, setSpeciesFilter ] = useState<string>('');
+    const [ typeFilter, setTypeFilter ] = useState<string>('');
+    const [ genderFilter, setGenderFilter ] = useState<'male' | 'female' | 'genderless' | 'unknown' | ''>('');
 
     useEffect(function() {
         async function fetchCharacters() {
-            const characterResponse = await getCharacters(page, nameFilter);
+            const characterResponse = await getCharacters(page, nameFilter, statusFilter, speciesFilter, typeFilter, genderFilter);
             setCharacters(characterResponse.results);
             setTotalPages(characterResponse.info.pages);
         }
 
         fetchCharacters();
-    }, [ page, nameFilter ]);
+    }, [ page, nameFilter, statusFilter, speciesFilter, typeFilter, genderFilter ]);
 
     function nameFilterChangeHandler(e: ChangeEvent<HTMLInputElement>) {
         setNameFilter(e.target.value);
@@ -33,13 +38,20 @@ export default function Characters() {
         setPage(page);
     }
 
+    function clearFilterLinkHandler() {
+        setStatusFilter('');
+        setSpeciesFilter('');
+        setTypeFilter('');
+        setGenderFilter('');
+    }
+
     return (<>
         <NavigationBar currentPage='characters' />
         <Title>Characters</Title>
         <SearchBar value={nameFilter} onChange={nameFilterChangeHandler} />
         <Grid container spacing={2}>
             <Grid item md={3}>
-                <p>filtering</p>
+                <FilterPanel onClearFilter={clearFilterLinkHandler} />
             </Grid>
             <Grid item md={9}>
                 <CharacterList characters={characters} />
