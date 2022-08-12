@@ -2,7 +2,13 @@ import { ChangeEventHandler } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
-export default function SearchBar({ value, onChange }: { value: string, onChange: ChangeEventHandler<HTMLInputElement> }) {
+export default function SearchBar({
+    value,
+    onChange
+}: {
+    value: string;
+    onChange: ChangeEventHandler<HTMLInputElement>;
+}) {
     return <Grid container spacing={2} sx={{
         textAlign: 'center',
         verticalAlign: 'middle',

@@ -112,10 +112,6 @@
             "error",
             "never"
         ],
-        "implicit-arrow-linebreak": [
-            "error",
-            "beside"
-        ],
         "indent": "off",
         "jsx-quotes": [
             "error",

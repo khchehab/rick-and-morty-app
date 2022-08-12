@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CharacterType } from '../../../types/character';
 
-export default function Character({ character }: { character: CharacterType }) {
+export default function Character({ character }: { character: CharacterType; }) {
     if (!character) {
         return <p>Character could not be loaded!</p>;
     }

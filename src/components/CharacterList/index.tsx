@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Character from './Character';
 import { CharacterType } from '../../types/character';
 
-export default function CharacterList({ characters }: { characters: CharacterType[] }) {
+export default function CharacterList({ characters }: { characters: CharacterType[]; }) {
     if (!characters || characters.length < 1) {
         return <Typography sx={{
             textAlign: 'center'

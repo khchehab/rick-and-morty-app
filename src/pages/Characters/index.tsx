@@ -10,6 +10,7 @@ import { CharacterType } from '../../types/character';
 import { getCharacters } from '../../util/api';
 
 export default function Characters() {
+    // TODO Switch the below from state variables to a context
     const [ characters, setCharacters ] = useState<CharacterType[]>([]);
     const [ page, setPage ] = useState<number>(1);
     const [ totalPages, setTotalPages ] = useState<number>(1);
@@ -18,6 +19,7 @@ export default function Characters() {
     const [ speciesFilter, setSpeciesFilter ] = useState<string>('');
     const [ typeFilter, setTypeFilter ] = useState<string>('');
     const [ genderFilter, setGenderFilter ] = useState<'male' | 'female' | 'genderless' | 'unknown' | ''>('');
+    const [ expandedFilter, setExpandedFilter ] = useState<string>('');
 
     useEffect(function() {
         async function fetchCharacters() {
@@ -51,7 +53,9 @@ export default function Characters() {
         <SearchBar value={nameFilter} onChange={nameFilterChangeHandler} />
         <Grid container spacing={2}>
             <Grid item md={3}>
-                <FilterPanel onClearFilter={clearFilterLinkHandler} />
+                <FilterPanel expandedFilter={expandedFilter}
+                             expandedFilterSetter={setExpandedFilter}
+                             onClearFilter={clearFilterLinkHandler} />
             </Grid>
             <Grid item md={9}>
                 <CharacterList characters={characters} />

@@ -3,7 +3,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-export default function NavigationBar({ currentPage }: { currentPage: string }) {
+export default function NavigationBar({ currentPage }: { currentPage: string; }) {
     const links = [ {
         id: 'characters',
         href: '/',
