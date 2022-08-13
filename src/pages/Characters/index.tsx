@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import NavigationBar from '../../components/UI/NavigationBar';
@@ -6,62 +6,40 @@ import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
 import FilterPanel from '../../components/UI/FilterPanel';
-import { CharacterType } from '../../types/character';
+import { CharacterFilterContextType, CharacterType } from '../../types/character';
 import { getCharacters } from '../../util/api';
+import CharacterFilterContext from '../../contexts/character-filter-context';
 
 export default function Characters() {
-    // TODO Switch the below from state variables to a context
     const [ characters, setCharacters ] = useState<CharacterType[]>([]);
-    const [ page, setPage ] = useState<number>(1);
-    const [ totalPages, setTotalPages ] = useState<number>(1);
-    const [ nameFilter, setNameFilter ] = useState<string>('');
-    const [ statusFilter, setStatusFilter ] = useState<'alive' | 'dead' | 'unknown' | ''>('');
-    const [ speciesFilter, setSpeciesFilter ] = useState<string>('');
-    const [ typeFilter, setTypeFilter ] = useState<string>('');
-    const [ genderFilter, setGenderFilter ] = useState<'male' | 'female' | 'genderless' | 'unknown' | ''>('');
-    const [ expandedFilter, setExpandedFilter ] = useState<string>('');
+
+    const filterContext = useContext<CharacterFilterContextType>(CharacterFilterContext);
+    const { page, totalPages, name, status, species, type, gender } = filterContext;
 
     useEffect(function() {
         async function fetchCharacters() {
-            const characterResponse = await getCharacters(page, nameFilter, statusFilter, speciesFilter, typeFilter, genderFilter);
+            const characterResponse = await getCharacters(page, name, status, species, type, gender);
             setCharacters(characterResponse.results);
-            setTotalPages(characterResponse.info.pages);
+            filterContext.setTotalPages(characterResponse.info.pages);
         }
 
         fetchCharacters();
-    }, [ page, nameFilter, statusFilter, speciesFilter, typeFilter, genderFilter ]);
-
-    function nameFilterChangeHandler(e: ChangeEvent<HTMLInputElement>) {
-        setNameFilter(e.target.value);
-        setPage(1);
-    }
-
-    function pageChangeHandler(e: ChangeEvent<unknown>, page: number) {
-        setPage(page);
-    }
-
-    function clearFilterLinkHandler() {
-        setStatusFilter('');
-        setSpeciesFilter('');
-        setTypeFilter('');
-        setGenderFilter('');
-    }
+    }, [ page, name, status, species, type, gender ]);
 
     return (<>
+        {/* Move the navigation bar to the App component so that it's the same, maybe have the current page in context or in a state in App */}
         <NavigationBar currentPage='characters' />
         <Title>Characters</Title>
-        <SearchBar value={nameFilter} onChange={nameFilterChangeHandler} />
+        <SearchBar value={name} onChange={filterContext.nameChange} />
         <Grid container spacing={2}>
             <Grid item md={3}>
-                <FilterPanel expandedFilter={expandedFilter}
-                             expandedFilterSetter={setExpandedFilter}
-                             onClearFilter={clearFilterLinkHandler} />
+                <FilterPanel />
             </Grid>
             <Grid item md={9}>
                 <CharacterList characters={characters} />
             </Grid>
         </Grid>
-        <Pagination count={totalPages} page={page} onChange={pageChangeHandler} size='large' sx={{
+        <Pagination count={totalPages} page={page} onChange={filterContext.pageChange} size='large' sx={{
             margin: '20px 0',
             '& .MuiPagination-ul': {
                 justifyContent: 'center'

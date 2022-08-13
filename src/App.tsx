@@ -1,5 +1,8 @@
+import { CharacterFilterProvider } from './contexts/character-filter-context';
 import Characters from './pages/Characters';
 
 export default function App() {
-    return <Characters />;
+    return <CharacterFilterProvider>
+        <Characters />
+    </CharacterFilterProvider>;
 }
