@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { Option } from './index';
 
 export interface CharacterType {
     id: number;
@@ -38,14 +39,14 @@ export interface CharacterFilterContextType {
     setTotalPages: (totalPages: number) => void;
 
     name: string;
-    status: 'alive' | 'dead' | 'unknown' | '';
+    status: string;
     species: string;
     type: string;
     gender: 'male' | 'female' | 'genderless' | 'unknown' | '';
     expanded: string;
 
     setName: (name: string) => void;
-    setStatus: (status: 'alive' | 'dead' | 'unknown' | '') => void;
+    setStatus: (status: string) => void;
     setSpecies: (species: string) => void;
     setType: (type: string) => void;
     setGender: (gender: 'male' | 'female' | 'genderless' | 'unknown' | '') => void;
@@ -56,10 +57,7 @@ export interface CharacterFilterContextType {
     pageChange: (e: ChangeEvent<unknown>, page: number) => void;
 }
 
-export const StatusOptions: {
-    value: 'alive' | 'dead' | 'unknown' | '',
-    display: string
-}[] = [ {
+export const StatusOptions: Option[] = [ {
     value: 'alive',
     display: 'Alive'
 }, {

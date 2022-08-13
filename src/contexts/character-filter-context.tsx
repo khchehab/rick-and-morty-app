@@ -16,7 +16,7 @@ const CharacterFilterContext = createContext<CharacterFilterContextType>({
     expanded: '',
 
     setName: (name: string) => undefined,
-    setStatus: (status: 'alive' | 'dead' | 'unknown' | '') => undefined,
+    setStatus: (status: string) => undefined,
     setSpecies: (species: string) => undefined,
     setType: (type: string) => undefined,
     setGender: (gender: 'male' | 'female' | 'genderless' | 'unknown' | '') => undefined,
@@ -32,7 +32,7 @@ export function CharacterFilterProvider({ children }: { children: ReactNode }) {
     const [ totalPages, setTotalPages ] = useState<number>(1);
 
     const [ name, setName ] = useState<string>('');
-    const [ status, setStatus ] = useState<'alive' | 'dead' | 'unknown' | ''>('');
+    const [ status, setStatus ] = useState<string>('');
     const [ species, setSpecies ] = useState<string>('');
     const [ type, setType ] = useState<string>('');
     const [ gender, setGender ] = useState<'male' | 'female' | 'genderless' | 'unknown' | ''>('');
