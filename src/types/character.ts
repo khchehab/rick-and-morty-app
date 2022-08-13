@@ -42,14 +42,14 @@ export interface CharacterFilterContextType {
     status: string;
     species: string;
     type: string;
-    gender: 'male' | 'female' | 'genderless' | 'unknown' | '';
+    gender: string;
     expanded: string;
 
     setName: (name: string) => void;
     setStatus: (status: string) => void;
     setSpecies: (species: string) => void;
     setType: (type: string) => void;
-    setGender: (gender: 'male' | 'female' | 'genderless' | 'unknown' | '') => void;
+    setGender: (gender: string) => void;
     setExpanded: (expanded: string) => void;
 
     clearFilter: () => void;
@@ -63,6 +63,20 @@ export const StatusOptions: Option[] = [ {
 }, {
     value: 'dead',
     display: 'Dead'
+}, {
+    value: 'unknown',
+    display: 'Unknown'
+} ];
+
+export const GenderOptions: Option[] = [ {
+    value: 'male',
+    display: 'Male'
+}, {
+    value: 'female',
+    display: 'Female'
+}, {
+    value: 'genderless',
+    display: 'Genderless'
 }, {
     value: 'unknown',
     display: 'Unknown'
