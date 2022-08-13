@@ -5,7 +5,7 @@ import { CharacterType } from '../../types/character';
 
 export default function CharacterList({ characters }: { characters: CharacterType[]; }) {
     if (!characters || characters.length < 1) {
-        return <Typography sx={{
+        return <Typography align='center' sx={{
             textAlign: 'center'
         }}>No characters found!</Typography>;
     }

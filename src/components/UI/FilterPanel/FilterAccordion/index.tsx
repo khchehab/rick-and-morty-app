@@ -5,20 +5,24 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CharacterFilterContextType, GenderOptions, StatusOptions } from '../../../../types/character';
+import { CharacterFilterContextType, GenderOptions, SpeciesOptions, StatusOptions } from '../../../../types/character';
 import CharacterFilterContext from '../../../../contexts/character-filter-context';
-import { Option } from '../../../../types';
 
 export default function FilterAccordion({ filterId }: { filterId: string; }) {
     const filterContext = useContext<CharacterFilterContextType>(CharacterFilterContext);
 
     const isExpanded = filterContext.expanded === filterId;
-    let filter: string, setFilter: (filter: string) => void, title: string, options: Option[];
+    let filter: string, setFilter: (filter: string) => void, title: string, options: string[];
     if (filterId === 'status') {
         filter = filterContext.status;
         setFilter = filterContext.setStatus;
         title = 'Status';
         options = StatusOptions;
+    } else if (filterId === 'species') {
+        filter = filterContext.species;
+        setFilter = filterContext.setSpecies;
+        title = 'Species';
+        options = SpeciesOptions;
     } else if (filterId === 'gender') {
         filter = filterContext.gender;
         setFilter = filterContext.setGender;
@@ -50,9 +54,9 @@ export default function FilterAccordion({ filterId }: { filterId: string; }) {
         </AccordionSummary>
         <AccordionDetails>
             {options.map((option) =>
-                <Button key={option.value} variant={filter === option.value ? 'contained' : 'outlined'} sx={{
+                <Button key={option} variant={filter === option ? 'contained' : 'outlined'} sx={{
                     margin: '5px 5px'
-                }} onClick={filterButtonClick(option.value)}>{option.display}</Button>)}
+                }} onClick={filterButtonClick(option)}>{option}</Button>)}
         </AccordionDetails>
     </Accordion>;
 }

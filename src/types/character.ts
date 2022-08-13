@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react';
-import { Option } from './index';
 
 export interface CharacterType {
     id: number;
@@ -57,27 +56,14 @@ export interface CharacterFilterContextType {
     pageChange: (e: ChangeEvent<unknown>, page: number) => void;
 }
 
-export const StatusOptions: Option[] = [ {
-    value: 'alive',
-    display: 'Alive'
-}, {
-    value: 'dead',
-    display: 'Dead'
-}, {
-    value: 'unknown',
-    display: 'Unknown'
-} ];
+export const StatusOptions: string[] = [
+    'alive', 'dead', 'unknown'
+];
 
-export const GenderOptions: Option[] = [ {
-    value: 'male',
-    display: 'Male'
-}, {
-    value: 'female',
-    display: 'Female'
-}, {
-    value: 'genderless',
-    display: 'Genderless'
-}, {
-    value: 'unknown',
-    display: 'Unknown'
-} ];
+export const GenderOptions: string[] = [
+    'male', 'female', 'genderless', 'unknown'
+];
+
+export const SpeciesOptions: string[] = [
+    'human', 'alien', 'humanoid', 'unknown', 'poopybutthole', 'mythological creature', 'animal', 'robot', 'cronenberg', 'disease'
+];

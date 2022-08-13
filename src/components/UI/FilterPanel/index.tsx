@@ -22,6 +22,7 @@ export default function FilterPanel() {
             marginTop: '20px'
         }}>
             <FilterAccordion filterId='status' />
+            <FilterAccordion filterId='species' />
             <FilterAccordion filterId='gender' />
         </div>
     </div>);
