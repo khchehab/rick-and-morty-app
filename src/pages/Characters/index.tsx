@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
-import NavigationBar from '../../components/UI/NavigationBar';
 import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
