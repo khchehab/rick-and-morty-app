@@ -27,8 +27,6 @@ export default function Characters() {
     }, [ page, name, status, species, type, gender ]);
 
     return (<>
-        {/* Move the navigation bar to the App component so that it's the same, maybe have the current page in context or in a state in App */}
-        <NavigationBar currentPage='characters' />
         <Title>Characters</Title>
         <SearchBar value={name} onChange={filterContext.nameChange} />
         <Grid container spacing={2}>
