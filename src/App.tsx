@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Characters from './pages/Characters';
 import NavigationBar from './components/UI/NavigationBar';
-import { CharacterFilterProvider } from './contexts/character-filter-context';
+import { CharacterProvider } from './contexts/character-context';
 
 export default function App() {
     const [ currentPage, setCurrentPage ] = useState<string>('characters');
@@ -26,8 +26,8 @@ export default function App() {
 
     return (<>
         <NavigationBar navigationLinks={links} currentPage={currentPage} onNavigationLinkClick={navigationLinkHandler} />
-        <CharacterFilterProvider>
+        <CharacterProvider>
             <Characters />
-        </CharacterFilterProvider>
+        </CharacterProvider>
     </>);
 }

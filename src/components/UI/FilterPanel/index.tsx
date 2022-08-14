@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { CharacterFilterContextType } from '../../../types/character';
-import CharacterFilterContext from '../../../contexts/character-filter-context';
+import { CharacterContextType } from '../../../types/character';
+import CharacterContext from '../../../contexts/character-context';
 import FilterAccordion from './FilterAccordion';
 
 export default function FilterPanel() {
-    const { clearFilter } = useContext<CharacterFilterContextType>(CharacterFilterContext);
+    const { clearFilter } = useContext<CharacterContextType>(CharacterContext);
 
     return (<div style={{
         textAlign: 'center',

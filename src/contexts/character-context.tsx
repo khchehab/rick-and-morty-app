@@ -1,7 +1,10 @@
 import { useState, createContext, ReactNode, ChangeEvent } from 'react';
-import { CharacterFilterContextType } from '../types/character';
+import { CharacterContextType, CharacterType } from '../types/character';
 
-const CharacterFilterContext = createContext<CharacterFilterContextType>({
+const CharacterContext = createContext<CharacterContextType>({
+    characters: [],
+    setCharacters: (characters: CharacterType[]) => undefined,
+
     page: 1,
     totalPages: 1,
 
@@ -27,7 +30,9 @@ const CharacterFilterContext = createContext<CharacterFilterContextType>({
     pageChange: (e: ChangeEvent<unknown>, page: number) => undefined
 });
 
-export function CharacterFilterProvider({ children }: { children: ReactNode }) {
+export function CharacterProvider({ children }: { children: ReactNode }) {
+    const [ characters, setCharacters ] = useState<CharacterType[]>([]);
+
     const [ page, setPage ] = useState<number>(1);
     const [ totalPages, setTotalPages ] = useState<number>(1);
 
@@ -54,7 +59,10 @@ export function CharacterFilterProvider({ children }: { children: ReactNode }) {
         setPage(page);
     }
 
-    return (<CharacterFilterContext.Provider value={{
+    return (<CharacterContext.Provider value={{
+        characters,
+        setCharacters,
+
         page,
         totalPages,
 
@@ -80,7 +88,7 @@ export function CharacterFilterProvider({ children }: { children: ReactNode }) {
         pageChange
     }}>
         {children}
-    </CharacterFilterContext.Provider>);
+    </CharacterContext.Provider>);
 }
 
-export default CharacterFilterContext;
+export default CharacterContext;

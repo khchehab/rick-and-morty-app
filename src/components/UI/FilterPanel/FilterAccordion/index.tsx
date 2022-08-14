@@ -5,27 +5,27 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CharacterFilterContextType, GenderOptions, SpeciesOptions, StatusOptions } from '../../../../types/character';
-import CharacterFilterContext from '../../../../contexts/character-filter-context';
+import { CharacterContextType, GenderOptions, SpeciesOptions, StatusOptions } from '../../../../types/character';
+import CharacterContext from '../../../../contexts/character-context';
 
 export default function FilterAccordion({ filterId }: { filterId: string; }) {
-    const filterContext = useContext<CharacterFilterContextType>(CharacterFilterContext);
+    const context = useContext<CharacterContextType>(CharacterContext);
 
-    const isExpanded = filterContext.expanded === filterId;
+    const isExpanded = context.expanded === filterId;
     let filter: string, setFilter: (filter: string) => void, title: string, options: string[];
     if (filterId === 'status') {
-        filter = filterContext.status;
-        setFilter = filterContext.setStatus;
+        filter = context.status;
+        setFilter = context.setStatus;
         title = 'Status';
         options = StatusOptions;
     } else if (filterId === 'species') {
-        filter = filterContext.species;
-        setFilter = filterContext.setSpecies;
+        filter = context.species;
+        setFilter = context.setSpecies;
         title = 'Species';
         options = SpeciesOptions;
     } else if (filterId === 'gender') {
-        filter = filterContext.gender;
-        setFilter = filterContext.setGender;
+        filter = context.gender;
+        setFilter = context.setGender;
         title = 'Gender';
         options = GenderOptions;
     } else {
@@ -34,13 +34,13 @@ export default function FilterAccordion({ filterId }: { filterId: string; }) {
     }
 
     function accordionChangeHandler(event: SyntheticEvent, expanded: boolean) {
-        filterContext.setExpanded(expanded ? filterId : '');
+        context.setExpanded(expanded ? filterId : '');
     }
 
     const filterButtonClick = (filterValue: string) =>
         (e: MouseEvent<HTMLButtonElement>) => {
             setFilter(filter === filterValue ? '' : filterValue);
-            filterContext.setPage(1);
+            context.setPage(1);
         };
 
     return <Accordion square={true} expanded={isExpanded} onChange={accordionChangeHandler}>

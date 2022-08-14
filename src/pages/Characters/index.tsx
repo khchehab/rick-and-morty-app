@@ -1,25 +1,23 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
 import FilterPanel from '../../components/UI/FilterPanel';
-import { CharacterFilterContextType, CharacterType } from '../../types/character';
+import { CharacterContextType } from '../../types/character';
 import { getCharacters } from '../../util/api';
-import CharacterFilterContext from '../../contexts/character-filter-context';
+import CharacterContext from '../../contexts/character-context';
 
 export default function Characters() {
-    const [ characters, setCharacters ] = useState<CharacterType[]>([]);
-
-    const filterContext = useContext<CharacterFilterContextType>(CharacterFilterContext);
-    const { page, totalPages, name, status, species, type, gender } = filterContext;
+    const context = useContext<CharacterContextType>(CharacterContext);
+    const { characters, page, totalPages, name, status, species, type, gender } = context;
 
     useEffect(function() {
         async function fetchCharacters() {
             const characterResponse = await getCharacters(page, name, status, species, type, gender);
-            setCharacters(characterResponse.results);
-            filterContext.setTotalPages(characterResponse.info.pages);
+            context.setCharacters(characterResponse.results);
+            context.setTotalPages(characterResponse.info.pages);
         }
 
         fetchCharacters();
@@ -27,7 +25,7 @@ export default function Characters() {
 
     return (<>
         <Title>Characters</Title>
-        <SearchBar value={name} onChange={filterContext.nameChange} />
+        <SearchBar value={name} onChange={context.nameChange} />
         <Grid container spacing={2}>
             <Grid item md={3}>
                 <FilterPanel />
@@ -36,7 +34,7 @@ export default function Characters() {
                 <CharacterList characters={characters} />
             </Grid>
         </Grid>
-        <Pagination count={totalPages} page={page} onChange={filterContext.pageChange} size='large' sx={{
+        <Pagination count={totalPages} page={page} onChange={context.pageChange} size='large' sx={{
             margin: '20px 0',
             '& .MuiPagination-ul': {
                 justifyContent: 'center'

@@ -30,7 +30,10 @@ export interface CharacterResponse {
     results: CharacterType[];
 }
 
-export interface CharacterFilterContextType {
+export interface CharacterContextType {
+    characters: CharacterType[];
+    setCharacters: (characters: CharacterType[]) => void;
+
     page: number;
     totalPages: number;
 
