@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, MouseEvent } from 'react';
 
 export interface CharacterType {
     id: number;
@@ -33,6 +33,10 @@ export interface CharacterResponse {
 export interface CharacterContextType {
     characters: CharacterType[];
     setCharacters: (characters: CharacterType[]) => void;
+
+    detailOpen: boolean;
+    openDetailModalHandler: (e: MouseEvent<HTMLElement>) => void;
+    closeDetailModalHandler: (e: object, reason: string) => void;
 
     page: number;
     totalPages: number;

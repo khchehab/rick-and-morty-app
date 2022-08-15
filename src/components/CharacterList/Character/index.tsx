@@ -1,10 +1,12 @@
+import { useContext, MouseEvent } from 'react';
 import Badge from '@mui/material/Badge';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { CharacterType } from '../../../types/character';
+import { CharacterContextType, CharacterType } from '../../../types/character';
+import CharacterContext from '../../../contexts/character-context';
 
 export default function Character({ character }: { character: CharacterType; }) {
     if (!character) {
@@ -15,7 +17,8 @@ export default function Character({ character }: { character: CharacterType; }) 
     const statusColor = character.status === 'Alive' ? 'success' : character.status === 'Dead' ? 'error' : 'warning';
     const statusBadgeRight = character.status === 'unknown' ? '50px' : '35px';
 
-    // TODO convert the below Badge component to a styled component (using emotion)
+    const { openDetailModalHandler } = useContext<CharacterContextType>(CharacterContext);
+
     return (<Badge badgeContent={character.status} color={statusColor} sx={{
         '& .MuiBadge-badge': {
             right: statusBadgeRight,
@@ -27,7 +30,7 @@ export default function Character({ character }: { character: CharacterType; }) 
             borderRadius: '5px'
         }
     }}>
-        <CardActionArea> {/* TODO should add a link here to the details of a character */}
+        <CardActionArea onClick={openDetailModalHandler}>
             <Card square sx={{ maxWidth: width }}>
                 <CardMedia component='img' height={width} image={character.image} alt={character.name} />
                 <CardContent>

@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
+import Modal from '@mui/material/Modal';
 import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
@@ -11,7 +12,11 @@ import CharacterContext from '../../contexts/character-context';
 
 export default function Characters() {
     const context = useContext<CharacterContextType>(CharacterContext);
-    const { characters, page, totalPages, name, status, species, type, gender } = context;
+    const {
+        characters, page, totalPages,
+        name, status, species, type, gender,
+        detailOpen
+    } = context;
 
     useEffect(function() {
         async function fetchCharacters() {
@@ -26,6 +31,9 @@ export default function Characters() {
     return (<>
         <Title>Characters</Title>
         <SearchBar value={name} onChange={context.nameChange} />
+        <Modal open={detailOpen} onClose={context.closeDetailModalHandler}>
+            <p>Hello World!</p>
+        </Modal>
         <Grid container spacing={2}>
             <Grid item md={3}>
                 <FilterPanel />

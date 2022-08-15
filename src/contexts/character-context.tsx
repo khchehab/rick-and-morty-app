@@ -1,9 +1,13 @@
-import { useState, createContext, ReactNode, ChangeEvent } from 'react';
+import { useState, createContext, ReactNode, ChangeEvent, MouseEvent } from 'react';
 import { CharacterContextType, CharacterType } from '../types/character';
 
 const CharacterContext = createContext<CharacterContextType>({
     characters: [],
     setCharacters: (characters: CharacterType[]) => undefined,
+
+    detailOpen: false,
+    openDetailModalHandler: (e: MouseEvent<HTMLElement>) => undefined,
+    closeDetailModalHandler: (e: object, reason: string) => undefined,
 
     page: 1,
     totalPages: 1,
@@ -32,6 +36,7 @@ const CharacterContext = createContext<CharacterContextType>({
 
 export function CharacterProvider({ children }: { children: ReactNode }) {
     const [ characters, setCharacters ] = useState<CharacterType[]>([]);
+    const [ detailOpen, setDetailOpen ] = useState<boolean>(false);
 
     const [ page, setPage ] = useState<number>(1);
     const [ totalPages, setTotalPages ] = useState<number>(1);
@@ -62,6 +67,10 @@ export function CharacterProvider({ children }: { children: ReactNode }) {
     return (<CharacterContext.Provider value={{
         characters,
         setCharacters,
+
+        detailOpen,
+        openDetailModalHandler: (e: MouseEvent<HTMLElement>) => setDetailOpen(true),
+        closeDetailModalHandler: (e: object, reason: string) => setDetailOpen(false),
 
         page,
         totalPages,
