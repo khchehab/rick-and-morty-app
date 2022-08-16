@@ -1,4 +1,4 @@
-import { useContext, MouseEvent } from 'react';
+import { useContext } from 'react';
 import Badge from '@mui/material/Badge';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';

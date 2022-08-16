@@ -1,17 +1,10 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
-export default function NavigationBar({
-    navigationLinks,
-    currentPage,
-    onNavigationLinkClick
-}: {
-    navigationLinks: { id: string; href: string; content: string; }[];
-    currentPage: string;
-    onNavigationLinkClick: (link: string) => void;
-}) {
+export default function NavigationBar() {
     return <AppBar position='static' sx={{
         color: '#000000',
         backgroundColor: '#f6f6f6',
@@ -32,17 +25,21 @@ export default function NavigationBar({
                 flexGrow: 1
             }}>WiKi</Typography>
 
-            {navigationLinks.map((link) => <Link key={link.id}
-                                                       href={currentPage === link.id ? undefined : link.href}
-                                                       underline={currentPage === link.id ? 'always' : 'none'}
-                                                       onClick={() => onNavigationLinkClick(link.id)}
-                                                       sx={{
-                fontSize: '1.6rem',
-                marginRight: '1.3rem',
-                cursor: 'pointer'
-            }}>
-                {link.content}
-            </Link>)}
+            <Link to='/'>Characters</Link>
+            <Link to='/episodes'>Episodes</Link>
+            <Link to='/locations'>Locations</Link>
+
+            {/* {navigationLinks.map((link) => <Link key={link.id} */}
+            {/*                                            href={currentPage === link.id ? undefined : link.href} */}
+            {/*                                            underline={currentPage === link.id ? 'always' : 'none'} */}
+            {/*                                            onClick={() => onNavigationLinkClick(link.id)} */}
+            {/*                                            sx={{ */}
+            {/*     fontSize: '1.6rem', */}
+            {/*     marginRight: '1.3rem', */}
+            {/*     cursor: 'pointer' */}
+            {/* }}> */}
+            {/*     {link.content} */}
+            {/* </Link>)} */}
         </Toolbar>
     </AppBar>;
 }
