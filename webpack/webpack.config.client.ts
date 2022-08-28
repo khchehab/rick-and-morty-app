@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 // import HtmlWebpackPlugin from 'html-webpack-plugin';
-import 'webpack-dev-server';
+// import 'webpack-dev-server';
 
 const config: webpack.Configuration = {
     mode: 'development',
@@ -12,15 +12,15 @@ const config: webpack.Configuration = {
         clean: true
     },
     target: 'web',
-    devServer: {
-        port: 3000,
-        static: {
-            directory: path.join(__dirname, '..', 'public')
-        },
-        open: true,
-        hot: true,
-        liveReload: true
-    },
+    // devServer: {
+    //     port: 3000,
+    //     static: {
+    //         directory: path.join(__dirname, '..', 'public')
+    //     },
+    //     open: true,
+    //     hot: true,
+    //     liveReload: true
+    // },
     devtool: false,
     resolve: {
         extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json' ]
