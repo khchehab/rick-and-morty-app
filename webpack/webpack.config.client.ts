@@ -1,21 +1,21 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+// import HtmlWebpackPlugin from 'html-webpack-plugin';
 import 'webpack-dev-server';
 
 const config: webpack.Configuration = {
     mode: 'development',
-    entry: './src/index.tsx',
+    entry: path.resolve(__dirname, '..', 'src', 'client.tsx'),
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'index_bundle.js',
+        path: path.join(__dirname, '..', 'dist', 'public'),
+        filename: 'bundle.js',
         clean: true
     },
     target: 'web',
     devServer: {
         port: 3000,
         static: {
-            directory: path.join(__dirname, 'public')
+            directory: path.join(__dirname, '..', 'public')
         },
         open: true,
         hot: true,
@@ -52,9 +52,9 @@ const config: webpack.Configuration = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'public', 'index.html')
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: path.join(__dirname, '.., 'public', 'index.html')
+        // }),
         new webpack.SourceMapDevToolPlugin({})
     ],
     optimization: {
