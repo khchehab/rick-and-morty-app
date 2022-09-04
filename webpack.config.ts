@@ -16,9 +16,10 @@ const config: webpack.Configuration = {
         path: path.join(__dirname, 'dist'),
         // filename: '[name].[contenthash].js',
         // chunkFilename: '[name].[contenthash].js',
+        // assetModuleFilename: '[name].[contenthash][ext]',
         filename: '[name].js',
         chunkFilename: '[name].js',
-        assetModuleFilename: '[name].[contenthash][ext]',
+        assetModuleFilename: '[name][ext]',
         hashDigestLength: 8,
         publicPath: '/',
         clean: true
