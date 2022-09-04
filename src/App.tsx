@@ -1,5 +1,4 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
-import './index.css';
 import NavigationBar from './components/UI/NavigationBar';
 import { CharacterProvider } from './contexts/character-context';
 import Characters from './pages/Characters';

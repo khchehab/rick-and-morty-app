@@ -36,7 +36,7 @@ export default function Character({ character }: { character: CharacterType; }) 
                 <CardContent>
                     <Typography variant='h5' align='left' gutterBottom sx={{
                         fontSize: '1.2rem'
-                    }}>{character.name}</Typography>
+                    }}>{character.name} 23456</Typography>
                     <Typography variant='body2' align='left' sx={{
                         fontWeight: '300',
                         fontSize: '1rem'
