@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -10,13 +9,15 @@ import 'webpack-hot-middleware';
 const config: webpack.Configuration = {
     mode: 'development',
     entry: [
-        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000',
+        'webpack-hot-middleware/client',
         path.resolve(__dirname, 'src', 'client.tsx')
     ],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        // filename: '[name].[contenthash].js',
+        // chunkFilename: '[name].[contenthash].js',
+        filename: '[name].js',
+        chunkFilename: '[name].js',
         assetModuleFilename: '[name].[contenthash][ext]',
         hashDigestLength: 8,
         publicPath: '/',
@@ -54,10 +55,6 @@ const config: webpack.Configuration = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'public', 'index.ejs'),
-            favicon: path.resolve(__dirname, 'public', 'favicon.ico')
-        }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',

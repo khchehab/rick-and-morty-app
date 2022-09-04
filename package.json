@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.ts",
-    "start": "ts-node src/server.ts",
+    "start": "ts-node src/server.tsx",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -31,9 +31,9 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
+    "ejs": "^3.1.8",
     "eslint": "^8.23.0",
     "eslint-plugin-react": "^7.31.1",
-    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "react-refresh": "^0.14.0",
     "terser-webpack-plugin": "^5.3.6",
