@@ -17,7 +17,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-app.set('views', path.resolve(__dirname, '..', 'public'));
+app.set('views', path.resolve(__dirname, '..', 'dist'));
 app.set('view engine', 'ejs');
 app.get('*', (req, res) => {
     const content = renderToString(<StaticRouter location={req.url}>

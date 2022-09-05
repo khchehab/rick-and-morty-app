@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
@@ -14,9 +15,6 @@ const config: webpack.Configuration = {
     ],
     output: {
         path: path.join(__dirname, 'dist'),
-        // filename: '[name].[contenthash].js',
-        // chunkFilename: '[name].[contenthash].js',
-        // assetModuleFilename: '[name].[contenthash][ext]',
         filename: '[name].js',
         chunkFilename: '[name].js',
         assetModuleFilename: '[name][ext]',
@@ -25,7 +23,7 @@ const config: webpack.Configuration = {
         clean: true
     },
     target: 'web',
-    devtool: false,
+    devtool: 'inline-source-map',
     resolve: {
         extensions: [ '.ts', '.tsx', '.js', '.jsx', '.json' ]
     },
@@ -52,10 +50,20 @@ const config: webpack.Configuration = {
             {
                 test: /\.(woff2?|eot|ttf|otf)$/i,
                 type: 'asset/resource'
+            },
+            {
+                test: /\.ejs$/i,
+                use: 'raw-loader'
             }
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public', 'index.ejs'),
+            favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
+            filename: 'index.ejs',
+            inject: true
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -65,10 +73,10 @@ const config: webpack.Configuration = {
             overlay: {
                 sockIntegration: 'whm'
             }
-        }),
-        new webpack.SourceMapDevToolPlugin({})
+        })
     ],
     optimization: {
+        usedExports:true,
         minimizer: [
             new TerserPlugin(),
             new CssMinimizerPlugin()
