@@ -8,13 +8,14 @@ import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import 'webpack-hot-middleware';
 
 const config: webpack.Configuration = {
+    name: 'client',
     mode: 'development',
     entry: [
         'webpack-hot-middleware/client',
-        path.resolve(__dirname, 'src', 'client.tsx')
+        path.resolve(process.cwd(), 'src', 'client.tsx')
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(process.cwd(), 'dist', 'public'),
         filename: '[name].js',
         chunkFilename: '[name].js',
         assetModuleFilename: '[name][ext]',
@@ -59,8 +60,8 @@ const config: webpack.Configuration = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'public', 'index.ejs'),
-            favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
+            template: path.resolve(process.cwd(), 'public', 'index.ejs'),
+            favicon: path.resolve(process.cwd(), 'public', 'favicon.ico'),
             filename: 'index.ejs',
             inject: true
         }),

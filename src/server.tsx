@@ -5,7 +5,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
-import webpackConfig from '../webpack.config';
+import webpackConfig from '../webpack.config.client';
 import App from './App';
 
 const app = express();
@@ -17,7 +17,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-app.set('views', path.resolve(__dirname, '..', 'dist'));
+app.set('views', path.resolve(__dirname, 'public'));
 app.set('view engine', 'ejs');
 app.get('*', (req, res) => {
     const content = renderToString(<StaticRouter location={req.url}>
