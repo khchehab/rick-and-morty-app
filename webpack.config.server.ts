@@ -35,7 +35,7 @@ const config: webpack.Configuration = {
         ]
     },
     optimization: {
-        usedExports:true,
+        usedExports: true,
         minimizer: [
             new TerserPlugin()
         ]

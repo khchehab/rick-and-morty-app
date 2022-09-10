@@ -6,8 +6,7 @@ import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
 import FilterPanel from '../../components/UI/FilterPanel';
-import { Error } from '../../types';
-import { CharacterContextType, CharacterResponse } from '../../types/character';
+import { CharacterContextType } from '../../types/character';
 import { getCharacters } from '../../util/api';
 import CharacterContext from '../../contexts/character-context';
 

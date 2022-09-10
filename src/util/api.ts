@@ -15,8 +15,8 @@ export async function getCharacters(
     const response = await fetch(
         `https://rickandmortyapi.com/api/character?page=${page}&name=${nameFilter}&status=${statusFilter}&species=${speciesFilter}&type=${typeFilter}&gender=${genderFilter}`,
         {
-            method: 'get',
-            // signal: abortController.signal
+            method: 'get'/* ,
+            signal: abortController.signal */
         });
     return await response.json() as Promise<CharacterResponse | Error>;
 }

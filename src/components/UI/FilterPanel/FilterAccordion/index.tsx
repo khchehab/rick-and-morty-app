@@ -1,4 +1,4 @@
-import { MouseEvent, SyntheticEvent, useContext } from 'react';
+import { SyntheticEvent, useContext } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -38,7 +38,7 @@ export default function FilterAccordion({ filterId }: { filterId: string; }) {
     }
 
     const filterButtonClick = (filterValue: string) =>
-        (e: MouseEvent<HTMLButtonElement>) => {
+        () => {
             setFilter(filter === filterValue ? '' : filterValue);
             context.setPage(1);
         };
