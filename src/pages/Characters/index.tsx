@@ -6,7 +6,8 @@ import Title from '../../components/UI/Title';
 import CharacterList from '../../components/CharacterList';
 import SearchBar from '../../components/UI/SearchBar';
 import FilterPanel from '../../components/UI/FilterPanel';
-import { CharacterContextType } from '../../types/character';
+import { Error } from '../../types';
+import { CharacterContextType, CharacterResponse } from '../../types/character';
 import { getCharacters } from '../../util/api';
 import CharacterContext from '../../contexts/character-context';
 
@@ -21,8 +22,14 @@ export default function Characters() {
     useEffect(function() {
         async function fetchCharacters() {
             const characterResponse = await getCharacters(page, name, status, species, type, gender);
-            context.setCharacters(characterResponse.results);
-            context.setTotalPages(characterResponse.info.pages);
+
+            if (!('error' in characterResponse)) {
+                context.setCharacters(characterResponse.results);
+                context.setTotalPages(characterResponse.info.pages);
+            } else {
+                context.setCharacters([]);
+                context.setTotalPages(0);
+            }
         }
 
         fetchCharacters();

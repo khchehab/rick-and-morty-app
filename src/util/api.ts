@@ -1,3 +1,4 @@
+import { Error } from '../types';
 import { CharacterResponse } from '../types/character';
 
 // let abortController: AbortController | undefined = undefined;
@@ -5,7 +6,7 @@ import { CharacterResponse } from '../types/character';
 export async function getCharacters(
     page: number,
     nameFilter: string, statusFilter: string, speciesFilter: string, typeFilter: string, genderFilter: string
-): Promise<CharacterResponse> {
+): Promise<CharacterResponse | Error> {
     // if (abortController) {
     //     abortController.abort();
     // }
@@ -17,5 +18,5 @@ export async function getCharacters(
             method: 'get',
             // signal: abortController.signal
         });
-    return await response.json() as Promise<CharacterResponse>;
+    return await response.json() as Promise<CharacterResponse | Error>;
 }
