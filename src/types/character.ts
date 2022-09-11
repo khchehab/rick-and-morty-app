@@ -35,8 +35,9 @@ export interface CharacterContextType {
     setCharacters: (characters: CharacterType[]) => void;
 
     detailOpen: boolean;
-    openDetailModalHandler: (e: MouseEvent<HTMLElement>) => void;
-    closeDetailModalHandler: (e: object, reason: string) => void;
+    detailIndex: number;
+    openDetailModalHandler: (index: number) => void;
+    closeDetailModalHandler: () => void;
 
     page: number;
     totalPages: number;

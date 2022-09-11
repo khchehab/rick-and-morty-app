@@ -6,8 +6,9 @@ const CharacterContext = createContext<CharacterContextType>({
     setCharacters: (characters: CharacterType[]) => undefined,
 
     detailOpen: false,
-    openDetailModalHandler: (e: MouseEvent<HTMLElement>) => undefined,
-    closeDetailModalHandler: (e: object, reason: string) => undefined,
+    detailIndex: -1,
+    openDetailModalHandler: (index: number) => undefined,
+    closeDetailModalHandler: () => undefined,
 
     page: 1,
     totalPages: 1,
@@ -37,6 +38,7 @@ const CharacterContext = createContext<CharacterContextType>({
 export function CharacterProvider({ children }: { children: ReactNode }) {
     const [ characters, setCharacters ] = useState<CharacterType[]>([]);
     const [ detailOpen, setDetailOpen ] = useState<boolean>(false);
+    const [ detailIndex, setDetailIndex ] = useState<number>(-1);
 
     const [ page, setPage ] = useState<number>(1);
     const [ totalPages, setTotalPages ] = useState<number>(1);
@@ -69,8 +71,15 @@ export function CharacterProvider({ children }: { children: ReactNode }) {
         setCharacters,
 
         detailOpen,
-        openDetailModalHandler: (e: MouseEvent<HTMLElement>) => setDetailOpen(true),
-        closeDetailModalHandler: (e: object, reason: string) => setDetailOpen(false),
+        detailIndex,
+        openDetailModalHandler: (index: number) => {
+            setDetailIndex(index);
+            setDetailOpen(true);
+        },
+        closeDetailModalHandler: () => {
+            setDetailIndex(-1);
+            setDetailOpen(false);
+        },
 
         page,
         totalPages,

@@ -9,6 +9,7 @@ import FilterPanel from '../../components/UI/FilterPanel';
 import { CharacterContextType } from '../../types/character';
 import { getCharacters } from '../../util/api';
 import CharacterContext from '../../contexts/character-context';
+import CharacterDetail from '../../components/CharacterList/CharacterDetail';
 
 export default function Characters() {
     const context = useContext<CharacterContextType>(CharacterContext);
@@ -38,7 +39,7 @@ export default function Characters() {
         <Title>Characters</Title>
         <SearchBar value={name} onChange={context.nameChange} />
         <Modal open={detailOpen} onClose={context.closeDetailModalHandler}>
-            <p>Hello World!</p>
+            <CharacterDetail />
         </Modal>
         <Grid container spacing={2}>
             <Grid item md={3}>

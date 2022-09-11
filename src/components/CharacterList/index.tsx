@@ -11,8 +11,8 @@ export default function CharacterList({ characters }: { characters: CharacterTyp
     }
 
     return (<Grid container spacing={2} alignItems='center' justifyContent='flex-start'>
-        {characters.map((character) => <Grid item key={character.id}>
-            <Character character={character} />
+        {characters.map((character: CharacterType, index: number) => <Grid item key={character.id}>
+            <Character character={character} index={index} />
         </Grid>)}
     </Grid>);
 }
