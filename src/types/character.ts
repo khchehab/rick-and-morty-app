@@ -1,10 +1,11 @@
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 export interface CharacterType {
     id: number;
     name: string;
     status: string;
     species: string;
+    type?: string;
     gender: string;
     origin: {
         name: string;

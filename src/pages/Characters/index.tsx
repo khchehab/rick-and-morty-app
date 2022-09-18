@@ -42,10 +42,10 @@ export default function Characters() {
             <CharacterDetail />
         </Modal>
         <Grid container spacing={2}>
-            <Grid item md={3}>
+            <Grid item xs={3}>
                 <FilterPanel />
             </Grid>
-            <Grid item md={9}>
+            <Grid item xs={9}>
                 <CharacterList characters={characters} />
             </Grid>
         </Grid>

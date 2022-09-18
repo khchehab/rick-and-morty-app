@@ -14,8 +14,8 @@ export default function SearchBar({
         verticalAlign: 'middle',
         marginBottom: '25px'
     }}>
-        <Grid item md={4}>&nbsp;</Grid>
-        <Grid item md={4}>
+        <Grid item xs={4}>&nbsp;</Grid>
+        <Grid item xs={4}>
             <TextField id='search-field'
                        label='Search'
                        variant='standard'
@@ -25,6 +25,6 @@ export default function SearchBar({
                        value={value}
                        onChange={onChange} />
         </Grid>
-        <Grid item md={4}>&nbsp;</Grid>
+        <Grid item xs={4}>&nbsp;</Grid>
     </Grid>;
 }

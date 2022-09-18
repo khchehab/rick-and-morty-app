@@ -19,6 +19,8 @@ export default function Character({
         return <p>Character could not be loaded!</p>;
     }
 
+    const capitalize = (s: string) => `${s.charAt(0).toUpperCase()}${s.substring(1)}`;
+
     const width = 300;
     const statusColor = character.status === 'Alive' ? 'success' : character.status === 'Dead' ? 'error' : 'warning';
     const statusBadgeRight = character.status === 'unknown' ? '50px' : '35px';
@@ -26,7 +28,7 @@ export default function Character({
     const { openDetailModalHandler } = useContext<CharacterContextType>(CharacterContext);
     const cardActionAreaClickHandler = (e: MouseEvent<HTMLElement>) => openDetailModalHandler(index);
 
-    return (<Badge badgeContent={character.status} color={statusColor} sx={{
+    return (<Badge badgeContent={capitalize(character.status)} color={statusColor} sx={{
         '& .MuiBadge-badge': {
             right: statusBadgeRight,
             top: '20px',
