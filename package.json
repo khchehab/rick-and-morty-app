@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "description": "A Rick and Morty client app that utilizes the Rick and Morty API.",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "webpack --config webpack.config.server.ts --config webpack.config.client.ts",
     "start": "node dist/server.js",
