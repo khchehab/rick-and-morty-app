@@ -1,0 +1,123 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    position: relative;
+    background-color: #202329;
+    color: #9e9e9e;
+    padding: 4.5rem 0;
+    min-height: calc(120px);
+    width: 100%;
+}
+
+.footer .stat-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.footer .stat-list .stat-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer .stat-list .stat-item + .stat-item {
+    margin-left: 1.5rem;
+}
+
+.footer .stat-list .stat-item a {
+    transition: 0.1s;
+    color: #9e9e9e;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.footer .stat-list .stat-item *:last-child {
+    margin-bottom: 0;
+}
+
+.footer .stat-list .stat-item a:focus,
+.footer .stat-list .stat-item a:hover {
+    text-decoration: none;
+    color: #ff9800;
+}
+
+.footer .stat-list .stat-item a span {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+}
+
+.footer .server-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9e9e9e;
+    text-decoration: none;
+}
+
+.footer .server-status:active {
+    outline-width: 0;
+    text-decoration: underline;
+}
+
+.footer .server-status:focus,
+.footer .server-status:hover {
+    text-decoration: none;
+    border-bottom: none;
+    color: #ff9800;
+}
+
+.footer .server-status span:first-child {
+    margin: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+}
+
+.footer .server-status span:last-child {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+}
+
+.footer .server-status .up {
+    background-color: #55cc44;
+}
+
+.footer .server-status .down {
+    background-color: #cc4455;
+}
+
+.footer .tech-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    margin: 1.25rem 0 0;
+    gap: 1rem;
+}
+
+.footer .tech-stack .stack-item {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer .tech-stack .stack-item a {
+    transition: 0.1s;
+    color: #9e9e9e;
+    text-decoration: underline;
+    text-decoration-color: #ff9800;
+}
