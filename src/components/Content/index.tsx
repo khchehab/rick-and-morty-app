@@ -42,21 +42,36 @@ function Content({ characterCount }: { characterCount: number }) {
                         {characters.slice(0, 3).map(function (
                             character: SimpleCharacter,
                         ) {
-                            return <CharacterCard character={character} />;
+                            return (
+                                <CharacterCard
+                                    key={`character_${character.id}`}
+                                    character={character}
+                                />
+                            );
                         })}
                     </Grid>
                     <Grid size={4}>
                         {characters.slice(3, 6).map(function (
                             character: SimpleCharacter,
                         ) {
-                            return <CharacterCard character={character} />;
+                            return (
+                                <CharacterCard
+                                    key={`character_${character.id}`}
+                                    character={character}
+                                />
+                            );
                         })}
                     </Grid>
                     <Grid size={4}>
                         {characters.slice(6, 9).map(function (
                             character: SimpleCharacter,
                         ) {
-                            return <CharacterCard character={character} />;
+                            return (
+                                <CharacterCard
+                                    key={`character_${character.id}`}
+                                    character={character}
+                                />
+                            );
                         })}
                     </Grid>
                 </Grid>
