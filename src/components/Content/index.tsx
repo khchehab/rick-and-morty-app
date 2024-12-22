@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Grid2 as Grid } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import CircularProgress from "@mui/material/CircularProgress";
 import Banner from "../Banner";
 import CharacterCard from "../CharacterCard";
 import { SimpleCharacter } from "../../types";
@@ -28,6 +29,9 @@ function Content({ characterCount }: { characterCount: number }) {
     return (
         <main>
             <Banner />
+            {characters.length === 0 && (
+                <CircularProgress sx={{ marginTop: "10px" }} />
+            )}
             {characters.length > 0 && (
                 <Grid
                     container

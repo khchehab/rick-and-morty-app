@@ -1,5 +1,9 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { Circle } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Circle from "@mui/icons-material/Circle";
 import { SimpleCharacter } from "../../types";
 
 function CharacterCard({ character }: { character: SimpleCharacter }) {
@@ -49,12 +53,12 @@ function CharacterCard({ character }: { character: SimpleCharacter }) {
                                 fontSize: "0.875rem",
                             }}
                         />
-                        <Typography variant="body">
+                        <Typography variant="body1">
                             {character.status} — {character.species}
                         </Typography>
                     </Box>
                     <Typography
-                        variant="body"
+                        variant="body2"
                         sx={{ display: "block" }}
                         color="#9e9e9e">
                         Last known location:
@@ -63,10 +67,10 @@ function CharacterCard({ character }: { character: SimpleCharacter }) {
                         variant="body1"
                         sx={{ display: "block" }}
                         fontWeight="500">
-                        {character.lastKnownLocation}
+                        {character.lastKnownLocation.name}
                     </Typography>
                     <Typography
-                        variant="body"
+                        variant="body2"
                         sx={{ display: "block" }}
                         color="#9e9e9e">
                         First seen in:

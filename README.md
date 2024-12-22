@@ -50,7 +50,7 @@ npm create vite@latest
 After running any of the above commands, you will be prompted in your command-line to enter the project name,
 the vite template and the variant.
 
-```shell
+```
 ✔ Project name: … rick-and-morty-app
 ✔ Select a framework: › React
 ✔ Select a variant: › TypeScript

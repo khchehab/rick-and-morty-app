@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
 import { checkServerStatus, getEndpointCounts } from "./api";
 
 function App() {
@@ -28,11 +28,7 @@ function App() {
     return (
         <>
             <Header />
-            <Content
-                characterCount={characterCount}
-                locationCount={locationCount}
-                episodeCount={episodeCount}
-            />
+            <Content characterCount={characterCount} />
             <Footer
                 serverStatus={serverStatus}
                 characterCount={characterCount}

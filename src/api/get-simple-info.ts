@@ -60,7 +60,9 @@ export async function getRandomSimpleCharacters(
             image: simple.image,
             status: simple.status,
             species: simple.species,
-            lastKnownLocation: simple.lastKnownLocation.name,
+            lastKnownLocation: {
+                name: simple.lastKnownLocation.name,
+            },
             firstSeenIn:
                 simple.episodeNames[simple.episodeNames.length - 1].name,
         } as SimpleCharacter;
