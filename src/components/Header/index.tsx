@@ -22,7 +22,7 @@ function Header() {
             <nav className="nav-bar">
                 <a
                     className="logo-link"
-                    href="/">
+                    href={location.pathname === "/" ? "#" : "/"}>
                     <HomeIcon fill="#333333" />
                 </a>
                 <div className="link-group">

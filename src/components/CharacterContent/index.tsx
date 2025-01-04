@@ -31,16 +31,36 @@ function CharacterContent() {
         });
     }
 
+    async function fetchCharactersForPage() {
+        const response = await fetchCharacters(page, filter);
+
+        setTotalPages(response.info.pages);
+        setCharacters(response.results);
+    }
+
     function handleApplyClick() {
-        console.log("apply filter clicked");
+        setCharacters([]);
+        setPage(1);
+        fetchCharactersForPage();
     }
 
     function handleClearClick() {
+        if (
+            filter.name === "" &&
+            filter.status === "" &&
+            filter.gender === ""
+        ) {
+            return;
+        }
+
         setFilter({
             name: "",
             status: "",
             gender: "",
         });
+        setCharacters([]);
+        setPage(1);
+        fetchCharactersForPage();
     }
 
     function handlePageChange(event: ChangeEvent, page: number) {
@@ -50,13 +70,6 @@ function CharacterContent() {
 
     useEffect(
         function () {
-            async function fetchCharactersForPage() {
-                const response = await fetchCharacters(page);
-
-                setTotalPages(response.info.pages);
-                setCharacters(response.results);
-            }
-
             fetchCharactersForPage();
         },
         [page],

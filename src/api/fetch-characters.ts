@@ -1,4 +1,4 @@
-import { PaginatedResponse, Character } from "../types";
+import { PaginatedResponse, Character, CharacterFilter } from "../types";
 
 interface CharacterResponse {
     data: {
@@ -8,6 +8,7 @@ interface CharacterResponse {
 
 export async function fetchCharacters(
     page: number,
+    filter: CharacterFilter,
 ): Promise<PaginatedResponse<Character>> {
     const response = await fetch("https://rickandmortyapi.com/graphql", {
         method: "POST",
@@ -16,7 +17,11 @@ export async function fetchCharacters(
         },
         body: JSON.stringify({
             query: `{
-                    characters(page: ${page}) {
+                    characters(page: ${page}, filter: {
+                        name: "${filter.name}",
+                        status: "${filter.status}",
+                        gender: "${filter.gender}"
+                    }) {
                         info {
                             count
                             pages
