@@ -6,6 +6,7 @@ import {
     getLocationCount,
 } from "./get-endpoint-counts.ts";
 import { getRandomSimpleCharacters } from "./get-simple-info.ts";
+import { fetchCharacters } from "./fetch-characters.ts";
 
 export {
     checkServerStatus,
@@ -14,4 +15,5 @@ export {
     getEpisodeCount,
     getEndpointCounts,
     getRandomSimpleCharacters,
+    fetchCharacters,
 };

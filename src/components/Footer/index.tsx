@@ -15,25 +15,13 @@ function Footer({
         <footer className="footer">
             <ul className="stat-list">
                 <li className="stat-item">
-                    <a
-                        title="characters"
-                        href="/">
-                        <span>Characters: {characterCount}</span>
-                    </a>
+                    <span>Characters: {characterCount}</span>
                 </li>
                 <li className="stat-item">
-                    <a
-                        title="locations"
-                        href="/">
-                        <span>Locations: {locationCount}</span>
-                    </a>
+                    <span>Locations: {locationCount}</span>
                 </li>
                 <li className="stat-item">
-                    <a
-                        title="episodes"
-                        href="/">
-                        <span>Episodes: {episodeCount}</span>
-                    </a>
+                    <span>Episodes: {episodeCount}</span>
                 </li>
             </ul>
             <a

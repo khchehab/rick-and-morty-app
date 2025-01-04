@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
-import Banner from "../Banner";
 import CharacterCard from "../CharacterCard";
 import { SimpleCharacter } from "../../types";
 import { getRandomSimpleCharacters } from "../../api";
 
-function Content({ characterCount }: { characterCount: number }) {
+function HomepageContent({ characterCount }: { characterCount: number }) {
     const [characters, setCharacters] = useState<SimpleCharacter[]>([]);
 
     useEffect(
@@ -28,16 +27,13 @@ function Content({ characterCount }: { characterCount: number }) {
 
     return (
         <main>
-            <Banner />
             {characters.length === 0 && (
                 <CircularProgress sx={{ marginTop: "10px" }} />
             )}
             {characters.length > 0 && (
                 <Grid
                     container
-                    spacing={2}
-                    paddingTop={2}
-                    paddingX={2}>
+                    spacing={2}>
                     <Grid size={4}>
                         {characters.slice(0, 3).map(function (
                             character: SimpleCharacter,
@@ -80,4 +76,4 @@ function Content({ characterCount }: { characterCount: number }) {
     );
 }
 
-export default Content;
+export default HomepageContent;

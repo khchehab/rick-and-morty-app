@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
 import Header from "./components/Header";
-import Content from "./components/Content";
+import Banner from "./components/Banner";
 import Footer from "./components/Footer";
+import HomepageContent from "./components/HomepageContent";
+import CharacterContent from "./components/CharacterContent";
 import { checkServerStatus, getEndpointCounts } from "./api";
 
 function App() {
@@ -26,16 +29,28 @@ function App() {
     }, []);
 
     return (
-        <>
+        <BrowserRouter>
             <Header />
-            <Content characterCount={characterCount} />
+            <Banner />
+            <Routes>
+                <Route
+                    index
+                    element={
+                        <HomepageContent characterCount={characterCount} />
+                    }
+                />
+                <Route
+                    path="/characters"
+                    element={<CharacterContent />}
+                />
+            </Routes>
             <Footer
                 serverStatus={serverStatus}
                 characterCount={characterCount}
                 locationCount={locationCount}
                 episodeCount={episodeCount}
             />
-        </>
+        </BrowserRouter>
     );
 }
 
