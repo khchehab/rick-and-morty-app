@@ -270,7 +270,7 @@ added back to the stage and committed.
 
 ### Project Structure
 
-Now that you've setup your project, let's talk about the project structure.
+Now that you've set up your project, let's talk about the project structure.
 
 It is recommended to following a logical structure for your project, in order to organize it and separate the files
 by logic, so that its not cluttered and messy and unorganized.
@@ -286,10 +286,12 @@ rick-and-morty-app/ # Project's root directory
 │   ├── api/        # API caller functions
 │   ├── assets/     # assets used within your code
 │   ├── components/ # custom react components
+│   ├── pages/      # custom react pages
 │   ├── types/      # types used throughout the application
 │   ├── App.tsx
 │   ├── index.css
 │   ├── main.tsx
+│   ├── themes.ts
 │   └── vite-env.d.ts
 ├── index.html
 └── ...
@@ -313,12 +315,20 @@ Assets, such as the home icon or the banner background, goes under this director
 
 #### `components/`
 
-Put react components that you create here.
+Put react components that you created here.
 Take note that this subdirectory is called components, so only include components here.
 In this project, for example, we have a Header, Footer and Banner components. All of these components are used within
 our App component.
 
-If you intend to create react pages, there need to be included in their own subdirectory called `pages/`.
+Components should be stateless, so no state should be stored in them, everything you might need should be passed
+as props.
+
+#### `pages/`
+
+Put the react pages that you created here.
+In this project, for example, we have a HomepageContent and CharacterContent.
+
+Pages can be stateful, and components used in them can use those states stored in the page.
 
 #### `types/`
 
