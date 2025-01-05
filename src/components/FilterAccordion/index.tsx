@@ -38,7 +38,11 @@ function FilterAccordion({
                 marginTop: "10px",
             }}>
             <AccordionSummary expandIcon={<FilterListIcon fontSize="small" />}>
-                <Typography component="span">Filters</Typography>
+                <Typography
+                    component="span"
+                    color="primary">
+                    Filters
+                </Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Grid

@@ -35,17 +35,16 @@ function Header({
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            paddingY={1}
+            padding={1}
             minHeight="60px"
-            sx={{
-                border: "1px dashed green",
-            }}>
+            backgroundColor="primary.headerBackground">
             <Link
                 href={location.pathname === "/" ? "#" : "/"}
                 underline="none"
                 display="flex"
-                alignItems="center">
-                <HomeIcon />
+                alignItems="center"
+                color="primary.logo">
+                <HomeIcon fill="currentColor" />
             </Link>
             <Stack
                 direction="row"

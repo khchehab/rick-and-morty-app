@@ -77,18 +77,17 @@ function CharacterContent() {
     );
 
     return (
-        <>
+        <Stack
+            spacing={2}
+            marginTop={2}
+            marginBottom={2}>
             <FilterAccordion
                 filter={filter}
                 onFilterChange={handleFilterChange}
                 onApply={handleApplyClick}
                 onClear={handleClearClick}
             />
-            <TableContainer
-                component={Paper}
-                sx={{
-                    marginY: "10px",
-                }}>
+            <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
                         <TableRow>
@@ -111,7 +110,7 @@ function CharacterContent() {
                                     sx={{
                                         textAlign: "center",
                                     }}>
-                                    <CircularProgress />
+                                    <CircularProgress color="primary.progress" />
                                 </TableCell>
                             </TableRow>
                         )}
@@ -169,7 +168,7 @@ function CharacterContent() {
                 }}
                 onChange={handlePageChange}
             />
-        </>
+        </Stack>
     );
 }
 

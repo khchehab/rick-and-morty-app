@@ -28,10 +28,15 @@ function HomepageContent({ characterCount }: { characterCount: number }) {
     return (
         <>
             {characters.length === 0 && (
-                <CircularProgress sx={{ marginTop: "10px" }} />
+                <CircularProgress
+                    color="primary.progress"
+                    sx={{ marginTop: "10px" }}
+                />
             )}
             {characters.length > 0 && (
-                <Grid container>
+                <Grid
+                    container
+                    spacing={2}>
                     <Grid size={4}>
                         {characters.slice(0, 3).map(function (
                             character: SimpleCharacter,

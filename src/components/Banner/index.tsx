@@ -10,26 +10,29 @@ function Banner() {
             alignItems="center"
             textAlign="center"
             position="relative"
+            backgroundColor="primary.bannerBackground"
             sx={{
-                border: "1px dashed green",
                 height: "calc(-60px + 50vh)",
             }}>
             <Typography
                 variant="h1"
                 fontSize="5.625rem"
                 fontWeight={900}
-                zIndex={2}>
+                zIndex={2}
+                color="primary.bannerText">
                 The Rick and Morty API
             </Typography>
             <Box
                 position="absolute"
                 width="100%"
                 height="100%"
-                zIndex={0}>
+                zIndex={0}
+                color="primary.bannerColor">
                 <BannerBackground
                     width="100%"
                     height="100%"
-                    opacity={0.5}
+                    fill="currentColor"
+                    // opacity={0.5}
                 />
             </Box>
         </Box>

@@ -18,9 +18,7 @@ function Footer({
             spacing={3}
             alignItems="center"
             paddingY={8}
-            sx={{
-                border: "1px dashed green",
-            }}>
+            backgroundColor="primary.footerBackground">
             <Stack spacing={1}>
                 <Stack
                     direction="row"

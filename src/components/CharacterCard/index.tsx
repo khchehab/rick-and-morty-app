@@ -23,6 +23,7 @@ function CharacterCard({ character }: { character: SimpleCharacter }) {
             <Stack textAlign="justify">
                 <CardContent>
                     <Typography
+                        color="primary"
                         variant="h5"
                         fontWeight="900">
                         {character.name}
@@ -43,20 +44,30 @@ function CharacterCard({ character }: { character: SimpleCharacter }) {
                                           : "grey",
                             }}
                         />
-                        <Typography variant="body1">
+                        <Typography
+                            variant="body1"
+                            color="primary">
                             {character.status} — {character.species}
                         </Typography>
                     </Stack>
-                    <Typography variant="body2">
+                    <Typography
+                        variant="body2"
+                        color="primary">
                         Last known location:
                     </Typography>
                     <Typography
+                        color="primary"
                         variant="body1"
                         fontWeight="500">
                         {character.lastKnownLocation.name}
                     </Typography>
-                    <Typography variant="body2">First seen in:</Typography>
                     <Typography
+                        variant="body2"
+                        color="primary">
+                        First seen in:
+                    </Typography>
+                    <Typography
+                        color="primary"
                         variant="body1"
                         fontWeight="500">
                         {character.firstSeenIn}

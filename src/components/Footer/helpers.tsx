@@ -5,8 +5,8 @@ import Typography from "@mui/material/Typography";
 export function StatText({ children }: { children: ReactNode }) {
     return (
         <Typography
-            component="span"
             color="primary"
+            component="span"
             fontSize="small"
             textTransform="uppercase"
             textAlign="center"
