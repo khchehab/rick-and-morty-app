@@ -11,7 +11,9 @@ import { checkServerStatus, getEndpointCounts } from "./api";
 import { lightTheme, darkTheme } from "./themes.ts";
 
 function App() {
-    const [darkMode, setDarkMode] = useState<boolean>(false);
+    const [darkMode, setDarkMode] = useState<boolean>(function () {
+        return JSON.parse(localStorage.getItem("darkMode") || "false");
+    });
     const [serverStatus, setServerStatus] = useState<boolean | undefined>(
         undefined,
     );
@@ -31,6 +33,14 @@ function App() {
 
         updateState();
     }, []);
+
+    // save dark mode in local storage to persist it in other pages
+    useEffect(
+        function () {
+            localStorage.setItem("darkMode", JSON.stringify(darkMode));
+        },
+        [darkMode],
+    );
 
     function handleDarkModeChange(event: ChangeEvent<HTMLInputElement>) {
         setDarkMode(event.target.checked);
