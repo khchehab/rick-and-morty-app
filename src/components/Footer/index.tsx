@@ -1,4 +1,6 @@
-import "./footer.css";
+import Stack from "@mui/material/Stack";
+import Link from "@mui/material/Link";
+import { StatText, ServerStatusIcon, TechStackText } from "./helpers.tsx";
 
 function Footer({
     characterCount,
@@ -12,53 +14,54 @@ function Footer({
     serverStatus: boolean | undefined;
 }) {
     return (
-        <footer className="footer">
-            <ul className="stat-list">
-                <li className="stat-item">
-                    <span>Characters: {characterCount}</span>
-                </li>
-                <li className="stat-item">
-                    <span>Locations: {locationCount}</span>
-                </li>
-                <li className="stat-item">
-                    <span>Episodes: {episodeCount}</span>
-                </li>
-            </ul>
-            <a
-                title="server-status"
-                className="server-status"
-                href="https://status.rickandmortyapi.com"
-                target="_blank">
-                <span>server status</span>
-                <span
-                    className={
-                        serverStatus !== undefined
-                            ? serverStatus
-                                ? "up"
-                                : "down"
-                            : ""
-                    }></span>
-            </a>
-            <div className="tech-stack">
-                <span className="stack-item">
-                    Created with React using Vite, inspired by{" "}
-                    <a
+        <Stack
+            spacing={3}
+            alignItems="center"
+            paddingY={8}
+            sx={{
+                border: "1px dashed green",
+            }}>
+            <Stack spacing={1}>
+                <Stack
+                    direction="row"
+                    spacing={2}>
+                    <StatText>characters: {characterCount}</StatText>
+                    <StatText>locations: {locationCount}</StatText>
+                    <StatText>episodes: {episodeCount}</StatText>
+                </Stack>
+                <Link
+                    title="server status"
+                    href="https://status.rickandmortyapi.com"
+                    target="_blank"
+                    underline="none"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={0.5}>
+                    <StatText>server status</StatText>
+                    <ServerStatusIcon serverStatus={serverStatus} />
+                </Link>
+            </Stack>
+            <Stack spacing={1}>
+                <TechStackText>
+                    Create with React using Vite, inspired by &nbsp;
+                    <Link
                         href="https://rickandmortyapi.com/"
                         target="_blank">
                         Rick and Morty API
-                    </a>{" "}
-                    website
-                </span>
-                <span className="stack-item">
-                    API:{" "}
-                    <a
+                    </Link>
+                    &nbsp; website
+                </TechStackText>
+                <TechStackText>
+                    API: &nbsp;
+                    <Link
                         href="https://github.com/afuh/rick-and-morty-api"
                         target="_blank">
                         Rick and Morty APIs
-                    </a>
-                </span>
-            </div>
-        </footer>
+                    </Link>
+                </TechStackText>
+            </Stack>
+        </Stack>
     );
 }
 

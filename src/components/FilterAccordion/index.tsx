@@ -36,20 +36,9 @@ function FilterAccordion({
             square={true}
             sx={{
                 marginTop: "10px",
-                backgroundColor: "#3c3e44",
             }}>
-            <AccordionSummary
-                expandIcon={
-                    <FilterListIcon
-                        fontSize="small"
-                        sx={{ color: "white" }}
-                    />
-                }>
-                <Typography
-                    color="white"
-                    component="span">
-                    Filters
-                </Typography>
+            <AccordionSummary expandIcon={<FilterListIcon fontSize="small" />}>
+                <Typography component="span">Filters</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Grid
@@ -115,13 +104,11 @@ function FilterAccordion({
             </AccordionDetails>
             <AccordionActions>
                 <Button
-                    sx={{ color: "white" }}
                     size={"small"}
                     onClick={onApply}>
                     Apply
                 </Button>
                 <Button
-                    sx={{ color: "white" }}
                     size={"small"}
                     onClick={onClear}>
                     Clear

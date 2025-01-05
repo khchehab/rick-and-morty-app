@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
-import HomepageContent from "./components/HomepageContent";
-import CharacterContent from "./components/CharacterContent";
+import HomepageContent from "./pages/HomepageContent";
+import CharacterContent from "./pages/CharacterContent";
 import { checkServerStatus, getEndpointCounts } from "./api";
+import { lightTheme, darkTheme } from "./themes.ts";
 
 function App() {
+    const [darkMode, setDarkMode] = useState<boolean>(false);
     const [serverStatus, setServerStatus] = useState<boolean | undefined>(
         undefined,
     );
@@ -28,29 +32,39 @@ function App() {
         updateState();
     }, []);
 
+    function handleDarkModeChange(event: ChangeEvent<HTMLInputElement>) {
+        setDarkMode(event.target.checked);
+    }
+
     return (
-        <BrowserRouter>
-            <Header />
-            <Banner />
-            <Routes>
-                <Route
-                    index
-                    element={
-                        <HomepageContent characterCount={characterCount} />
-                    }
+        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+            <CssBaseline />
+            <BrowserRouter>
+                <Header
+                    darkMode={darkMode}
+                    onDarkModeToggle={handleDarkModeChange}
                 />
-                <Route
-                    path="/characters"
-                    element={<CharacterContent />}
+                <Banner />
+                <Routes>
+                    <Route
+                        index
+                        element={
+                            <HomepageContent characterCount={characterCount} />
+                        }
+                    />
+                    <Route
+                        path="/characters"
+                        element={<CharacterContent />}
+                    />
+                </Routes>
+                <Footer
+                    serverStatus={serverStatus}
+                    characterCount={characterCount}
+                    locationCount={locationCount}
+                    episodeCount={episodeCount}
                 />
-            </Routes>
-            <Footer
-                serverStatus={serverStatus}
-                characterCount={characterCount}
-                locationCount={locationCount}
-                episodeCount={episodeCount}
-            />
-        </BrowserRouter>
+            </BrowserRouter>
+        </ThemeProvider>
     );
 }
 

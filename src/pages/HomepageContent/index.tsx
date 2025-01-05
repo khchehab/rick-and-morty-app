@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
-import CharacterCard from "../CharacterCard";
+import CharacterCard from "../../components/CharacterCard";
 import { SimpleCharacter } from "../../types";
 import { getRandomSimpleCharacters } from "../../api";
 
@@ -26,14 +26,12 @@ function HomepageContent({ characterCount }: { characterCount: number }) {
     );
 
     return (
-        <main>
+        <>
             {characters.length === 0 && (
                 <CircularProgress sx={{ marginTop: "10px" }} />
             )}
             {characters.length > 0 && (
-                <Grid
-                    container
-                    spacing={2}>
+                <Grid container>
                     <Grid size={4}>
                         {characters.slice(0, 3).map(function (
                             character: SimpleCharacter,
@@ -72,7 +70,7 @@ function HomepageContent({ characterCount }: { characterCount: number }) {
                     </Grid>
                 </Grid>
             )}
-        </main>
+        </>
     );
 }
 

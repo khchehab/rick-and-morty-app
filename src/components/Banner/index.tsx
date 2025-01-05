@@ -1,18 +1,38 @@
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import BannerBackground from "../../assets/banner-bg.svg?react";
-import "./banner.css";
 
 function Banner() {
     return (
-        <section className="banner">
-            <h1 className="title">The Rick and Morty API</h1>
-            <div className="banner-bg">
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            textAlign="center"
+            position="relative"
+            sx={{
+                border: "1px dashed green",
+                height: "calc(-60px + 50vh)",
+            }}>
+            <Typography
+                variant="h1"
+                fontSize="5.625rem"
+                fontWeight={900}
+                zIndex={2}>
+                The Rick and Morty API
+            </Typography>
+            <Box
+                position="absolute"
+                width="100%"
+                height="100%"
+                zIndex={0}>
                 <BannerBackground
                     width="100%"
                     height="100%"
-                    fill="#f5f5f5"
+                    opacity={0.5}
                 />
-            </div>
-        </section>
+            </Box>
+        </Box>
     );
 }
 

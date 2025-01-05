@@ -1,5 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -8,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
-import FilterAccordion from "../FilterAccordion";
+import FilterAccordion from "../../components/FilterAccordion";
 import { Character, CharacterFilter } from "../../types";
 import { fetchCharacters } from "../../api";
 
@@ -76,7 +77,7 @@ function CharacterContent() {
     );
 
     return (
-        <main>
+        <>
             <FilterAccordion
                 filter={filter}
                 onFilterChange={handleFilterChange}
@@ -123,18 +124,15 @@ function CharacterContent() {
                                                 width: "10%",
                                                 padding: "1px 0",
                                             }}>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    alignItems: "center",
-                                                }}>
+                                            <Stack
+                                                justifyContent={"center"}
+                                                alignItems={"center"}>
                                                 <img
                                                     src={row.image}
                                                     alt="character image"
                                                     style={{ height: "60px" }}
                                                 />
-                                            </div>
+                                            </Stack>
                                         </TableCell>
                                         <TableCell sx={{ width: "15%" }}>
                                             {row.name}
@@ -164,7 +162,6 @@ function CharacterContent() {
                 count={totalPages}
                 boundaryCount={2}
                 page={page}
-                color={"primary"} /* todo remove this after finalizing themes */
                 sx={{
                     display: "flex",
                     justifyContent: "center",
@@ -172,7 +169,7 @@ function CharacterContent() {
                 }}
                 onChange={handlePageChange}
             />
-        </main>
+        </>
     );
 }
 
